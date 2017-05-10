@@ -1,9 +1,17 @@
 
-contact = Contact.new(first_name: "Jimmy", last_name: "Stewart", phone_number: "777-345-5556", email: "harvey@gmail.com")
-contact.save
 
-contact = Contact.new(first_name: "Catherine", last_name: "Ohare", phone_number: "777-555-0988", email: "windy@gmail.com")
-contact.save
 
-contact = Contact.new(first_name: "Groucho", last_name: "Marx", phone_number: "212-555-6789", email: "ducksoup@gmail.com")
-contact.save
+100.times do
+
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+
+  Contact.create(
+                 first_name: first_name, 
+                 last_name: last_name, 
+                 email: Faker::Internet.free_email("#{first_name} #{last_name}"),
+                 phone_number: Faker::PhoneNumber.phone_number
+                 ) 
+end
+
+`say "I completed my task"`
